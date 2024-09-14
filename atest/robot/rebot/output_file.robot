@@ -1,5 +1,5 @@
 *** Settings ***
-Resource          rebot_resource.robot
+Resource          atest.resources.rebot_resource.robot
 
 *** Test Cases ***
 Output file content should be same with Robot and Rebot
