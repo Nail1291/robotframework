@@ -74,7 +74,7 @@ class Logger(AbstractLogger):
     def _listeners(self):
         cli_listeners = list(self._cli_listeners or [])
         lib_listeners = list(self._lib_listeners or [])
-        return sorted(cli_listeners + lib_listeners, key=lambda li: -li.order)
+        return sorted(cli_listeners + lib_listeners, key=lambda li: -li.priority)
 
     @property
     def start_loggers(self):
@@ -104,8 +104,8 @@ class Logger(AbstractLogger):
             self.close()
 
     def register_console_logger(self, type='verbose', width=78, colors='AUTO',
-                                markers='AUTO', stdout=None, stderr=None):
-        logger = ConsoleOutput(type, width, colors, markers, stdout, stderr)
+                                links='AUTO', markers='AUTO', stdout=None, stderr=None):
+        logger = ConsoleOutput(type, width, colors, links, markers, stdout, stderr)
         self._console_logger = self._wrap_and_relay(logger)
 
     def _wrap_and_relay(self, logger):

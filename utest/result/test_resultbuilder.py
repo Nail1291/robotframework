@@ -24,6 +24,13 @@ class TestBuildingSuiteExecutionResult(unittest.TestCase):
         self.suite = self.result.suite
         self.test = self.suite.tests[0]
 
+    def test_result_has_generation_time(self):
+        assert_equal(self.result.generation_time, datetime(2023, 9, 8, 12, 1, 47, 906104))
+        result = ExecutionResult("<robot><suite/></robot>")
+        assert_equal(result.generation_time, None)
+        result = ExecutionResult("<robot generated='20111024 13:41:20.873'><suite/></robot>")
+        assert_equal(result.generation_time, datetime(2011, 10, 24, 13, 41, 20, 873000))
+
     def test_suite_is_built(self):
         assert_equal(self.suite.source, Path('normal.html'))
         assert_equal(self.suite.name, 'Normal')
@@ -40,7 +47,7 @@ class TestBuildingSuiteExecutionResult(unittest.TestCase):
         assert_equal(self.test.doc, 'Test case documentation')
         assert_equal(self.test.timeout, None)
         assert_equal(list(self.test.tags), ['t1'])
-        assert_equal(len(self.test.body), 4)
+        assert_equal(len(self.test.body), 6)
         assert_equal(self.test.status, 'PASS')
         assert_equal(self.test.starttime, '20111024 13:41:20.925')
         assert_equal(self.test.endtime, '20111024 13:41:20.934')
@@ -365,7 +372,7 @@ class TestUsingPathlibPath(unittest.TestCase):
         assert_equal(test.doc, 'Test case documentation')
         assert_equal(test.timeout, None)
         assert_equal(list(test.tags), ['t1'])
-        assert_equal(len(test.body), 4)
+        assert_equal(len(test.body), 6)
         assert_equal(test.status, 'PASS')
         assert_equal(test.starttime, '20111024 13:41:20.925')
         assert_equal(test.endtime, '20111024 13:41:20.934')

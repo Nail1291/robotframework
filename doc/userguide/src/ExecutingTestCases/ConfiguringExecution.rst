@@ -802,8 +802,8 @@ Console colors
 
 The :option:`--consolecolors (-C)` option is used to control whether
 colors should be used in the console output. Colors are implemented
-using `ANSI colors`__ except on Windows where, by default, Windows
-APIs are used instead.
+using `ANSI escape codes`__ with a backup mechanism for older Windows
+versions that do not support ANSI codes.
 
 This option supports the following case-insensitive values:
 
@@ -815,13 +815,37 @@ This option supports the following case-insensitive values:
     Colors are used also when outputs are redirected. Does not work on Windows.
 
 `ansi`
-    Same as `on` but uses ANSI colors also on Windows. Useful, for example,
-    when redirecting output to a program that understands ANSI colors.
+    Same as `on` but forces ANSI codes to be used unconditionally on Windows.
 
 `off`
     Colors are disabled.
 
 __ http://en.wikipedia.org/wiki/ANSI_escape_code
+
+.. note:: Using ANSI codes on Windows by default is new in Robot Framework 7.1.
+
+Console links
+~~~~~~~~~~~~~
+
+Result file paths written to the console at the end of the execution are, by default,
+hyperlinks. This behavior can be controlled with the :option:`--consolelinks` option
+that accepts the following case-insensitive values:
+
+`auto`
+    Paths are converted to links when `console colors`_ are enabled. This is the default.
+
+`off`
+    Links are unconditionally disabled.
+
+The hyperlink support depends also on the console that is used, but nowadays
+the `support is pretty good`__. The commonly used `Windows Console`__ does not
+support links, though, but the newer `Windows Terminal`__ does.
+
+.. note:: Hyperlink support is new in Robot Framework 7.1.
+
+__ https://github.com/Alhadis/OSC8-Adoption
+__ https://en.wikipedia.org/wiki/Windows_Console
+__ https://en.wikipedia.org/wiki/Windows_Terminal
 
 Console markers
 ~~~~~~~~~~~~~~~
