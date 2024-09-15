@@ -7,3 +7,4 @@ Library           atest.ssh_cl
 SSH_TO_SERVER_TO_RUN_COMMANDS
     [Documentation]    SSH to the server and run some commands
     SSH AND RUN Command
+    Log To Console      End of TEST CASE: SSH_TO_SERVER_TO_RUN_COMMANDS
