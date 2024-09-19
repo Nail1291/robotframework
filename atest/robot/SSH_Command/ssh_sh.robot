@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation     This suite consists all test cases of E2E Stress test for Viavi Tls
+Documentation     This suite consists all test cases of E2E TLs
 #@Library           framework.libraries.common.SSHClient
 Library           atest.ssh_cl
 

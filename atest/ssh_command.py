@@ -3,7 +3,7 @@ sys.path.append('D:/local_git/robotfrm/robotframework')
 
 import logging
 #from framework.libraries.common.Logger import Logger
-from framework.libraries.common.SSHClient import SSHClient 
+from framework.libraries.common.PC_adb import SSHClient 
 
 
 if __name__ == "__main__":

@@ -34,7 +34,8 @@ class SSHClient:
         if not self.client:
             self.logger.error("SSH client is not connected")
             return None
-
+        else: 
+            self.logger.info(f"{self.hostname} Connected")            
         try:
             stdin, stdout, stderr = self.client.exec_command(command)
             output = stdout.read().decode()
